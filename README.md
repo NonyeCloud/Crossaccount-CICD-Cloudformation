@@ -25,6 +25,7 @@ Prerequisites Two AWS accounts were identified and designated:
 Tools – The AWS account where pipeline resides
 Target – The AWS account where deployment occurs
 
+https://user-images.githubusercontent.com/88491497/163722581-b62742e7-e508-43ef-b250-0090f9b0be78.png
 
 This target account consists of an IAM role that trusts the tools account and provides the required deployment-specific permissions. This IAM role is assumed by AWS CodeBuild in the tools account to carry out deployment.
 
