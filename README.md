@@ -1,2 +1,37 @@
 # Crossaccount-CICD-Cloudformation
 Cross-account deployment using CI/CD pipeline to deploy Lambda API
+GOAL OF THE INFRASTRUCTURE
+
+
+The goal of the infrastructure is to achieve an automated deployment of the application across different AWS accounts.
+
+
+ARCHITECTURE FRAMEWORK
+
+Operational Excellence Pillar: The operational excellence pillar focuses on running and monitoring systems, and continually improving processes and procedures which includes automating changes, responding to events, and defining standards to manage daily operations
+
+Security Pillar The security pillar focuses on protecting information and systems which includes confidentiality and integrity of data, managing user permissions, and establishing controls to detect security events.
+
+Reliability Pillar The reliability pillar focuses on workloads performing their intended functions and how to recover quickly from failure to meet demands which includes distributed system design, recovery planning, and adapting to changing requirements.
+
+Cost Optimization Pillar The cost optimization pillar focuses on avoiding unnecessary costs which includes understanding spending over time and controlling fund allocation, selecting resources of the right type and quantity, and scaling to meet business needs without overspending.
+
+Performance Efficiency Pillar The performance efficiency pillar focuses on structured and streamlined allocation of computing resources. which includes selecting resource types and sizes optimized for workload requirements, monitoring performance, and maintaining efficiency as business needs evolve
+
+THE DESIGN SOLUTION OVERVIEW
+
+Prerequisites Two AWS accounts were identified and designated:
+
+Tools – The AWS account where pipeline resides
+Target – The AWS account where deployment occurs
+
+
+This target account consists of an IAM role that trusts the tools account and provides the required deployment-specific permissions. This IAM role is assumed by AWS CodeBuild in the tools account to carry out deployment.
+
+AWS CloudFormation execution role was created to be assumed by AWS CloudFormation in the target account. This role has permissions to create your API resources, such as a Lambda function and Amazon API Gateway, in the target account.
+
+In the tools account, the CI/CD pipeline is built using AWS CloudFormation, AWS CodePipeline, AWS CodeBuild, and AWS CodeCommit.
+
+Result
+
+A fully functioning CI/CD pipeline that deploys your API in the target account. The pipeline starts automatically every time you check in your changes into your CodeCommit repository.
